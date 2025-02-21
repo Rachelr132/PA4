@@ -9,8 +9,8 @@ execute:
 ```{r}
 #| label: setup
 #| include: false
-library()  #load package of all the tidyverse packages
-library()  #load the package from the video that cleans variable names
+library(tidyverse)  #load package of all the tidyverse packages
+library(readr)  #load the package from the video that cleans variable names
 ```
 
 <!-- United States Department of Health and Human Services. Centers for Disease Control and Prevention. CDC Youth Risk Behavior Surveillance System (YRBSS) National Datasets, 1991-2021: YRBS_2021_national.csv. Ann Arbor, MI: Inter-university Consortium for Political and Social Research [distributor], 2025-02-04. https://doi.org/10.3886/E217921V1-168641 -->
@@ -71,12 +71,12 @@ Go ahead and read in the data, calling it `youth`. What do you notice?
 #| label: read-data
 #| eval: false
 
-youth <- read_csv("data-raw/YRBS2015.csv")
+youth <- read_csv("data-raw/YRBS2015.csv", skip=1, na =c(".","N/A"))
 ```
 
 Describe some of the issues you notice in the data:
 
-> Insert answer here
+> For age cat there is a lot of ".", NA is being read as a character, column names are in the wrong spot.
 
 ### Step 2: Skip the First Row
 
@@ -85,6 +85,7 @@ Using either the `help` options or the `readr` add an argument to the code above
 ### Step 3: Fix the Missing Values
 
 Take note of how missing values are designated in the data. Add an argument to the code above that identifies and fixes the data so that each missing value type is treated as the same `NA`.
+
 
 <!-- Change roles (Developer becomes Coder)! -->
 
