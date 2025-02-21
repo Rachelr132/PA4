@@ -11,6 +11,7 @@ execute:
 #| include: false
 library(tidyverse)  #load package of all the tidyverse packages
 library(readr)  #load the package from the video that cleans variable names
+library(janitor)
 ```
 
 <!-- United States Department of Health and Human Services. Centers for Disease Control and Prevention. CDC Youth Risk Behavior Surveillance System (YRBSS) National Datasets, 1991-2021: YRBS_2021_national.csv. Ann Arbor, MI: Inter-university Consortium for Political and Social Research [distributor], 2025-02-04. https://doi.org/10.3886/E217921V1-168641 -->
@@ -118,6 +119,10 @@ Add additional arguments to the code above that does the following:
 ### Step 5: Clean the Variable Names
 
 Use the `janitor` package to clean the variable names to snake_case.
+```{r}
+clean_names(youth)
+```
+
 
 ### Step 6: Write the Clean Data
 
@@ -127,7 +132,9 @@ Now that the data is clean, you can add `eval: false` to the prior code chunks a
 
 ```{r}
 #| label: read-clean-data
-youth_clean <- 
+youth_clean <- youth
+
+write_csv(x=youth_clean, file = "data-clean/youth_clean.csv")
 ```
 
 Why do we keep the code for the data cleaning but set the code chunks to `eval: false`?
