@@ -132,7 +132,7 @@ Now that the data is clean, you can add `eval: false` to the prior code chunks a
 
 ```{r}
 #| label: read-clean-data
-youth_clean <- youth
+youth_clean <- clean_names(youth)
 
 write_csv(x=youth_clean, file = "data-clean/youth_clean.csv")
 ```
@@ -175,7 +175,12 @@ How does the missingness of the data impact what variables you might choose to a
 #| label: plot  
 youth_clean |>  #instead of data = youth_clean in ggplot we can "pipe" our data  
   drop_na() |>  #drops missing values
-  ggplot()
+  ggplot(aes(x= `height_in_meters`, y = weight_in_kilograms, color= perception_of_weight)) +
+  labs(title= "Weight and Height Distribution Among Different Grades and Genders", x= " Height (m) ", y=" Weight (kg)") +
+  geom_point(alpha=0.25) +
+  geom_smooth(method = "lm")+
+  facet_wrap(grade~gender) 
+  ggsave("weight-perception.png")
 ```
 
 Complete the following steps in your visualization in the code chunk above:
