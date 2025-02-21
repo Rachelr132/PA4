@@ -139,7 +139,7 @@ write_csv(x=youth_clean, file = "data-clean/youth_clean.csv")
 
 Why do we keep the code for the data cleaning but set the code chunks to `eval: false`?
 
-> Insert Answer Here
+> So that the chunks aren't included in our rendered quarto qmd file. in R studio on Rachels computers
 
 <!-- Change roles (Developer becomes Coder)! -->
 
@@ -161,11 +161,11 @@ youth_clean |>
 
 What do the two graphs tell you about the missingness in the data (i.e., which variables are missing the most values and which combinations of variables are missing the most together)?
 
-> Insert Answer Here
+> Difficulty concentrating and how well speak english are two of the most missing variables, and the most missing combination is of drinks, oral, sexual, english, concentration.
 
 How does the missingness of the data impact what variables you might choose to analyze? Why?
 
-> Insert Answer Here
+> The ones with more missingness are less accurate and I refuse to analyze missing data(simply not possible).
 
 <!-- Change roles (Developer becomes Coder)! -->
 
