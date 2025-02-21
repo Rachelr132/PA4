@@ -203,6 +203,24 @@ Complete the following steps in your visualization in the code chunk above:
 -   Move the legend to the bottom of the graph\
 -   Adjust the figure height and width to 10x10
 
+```{r}
+#| fig-width: 10
+#| fig-height: 10
+youth_clean |>  #instead of data = youth_clean in ggplot we can "pipe" our data  
+  drop_na() |>  #drops missing values
+  ggplot(aes(x= `height_in_meters`, y = weight_in_kilograms, color= perception_of_weight)) +
+  labs(title= "Weight and Height Distribution Among Different Grades and Genders", x= " Height (m) ", y=" Weight (kg)", color = "Perception of Weight") +
+  geom_point(alpha=0.25) +
+  geom_smooth(method = "lm")+
+  scale_color_viridis_d(option = "mako", begin = 0.2, end = 0.85) +
+  theme_minimal() + 
+  theme(legend.position = "bottom") + 
+  facet_wrap(grade~gender, ncol = 4) 
+
+
+```
+
+
 # Canvas Quiz
 
 Working together as a team, the above analysis to answer the following questions on canvas:
